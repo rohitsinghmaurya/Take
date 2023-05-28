@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+void solve(){
+    string s;
+    cin>>s;
+    ll n = s.size();
+    ll res= INT_MAX;
+    for(char ch = 'a';ch<='z';ch++){
+         ll cnt=0,maxi = INT_MIN;
+         for(ll i=0;i<n;i++){
+             if(s[i]!=ch){
+                cnt++;
+             }
+             else{
+                 maxi = max(maxi,cnt);
+                 cnt=0;
+             }
+         }
+         maxi = max(maxi,cnt);
+         res = min(res,maxi);
+    }
+    ll r=0;
+    while(res!=0){
+         r++;
+         res/=2;
+    }
+    cout<<r<<endl;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    ll tc;
+    cin>>tc;
+    for (int t = 1; t <= tc; t++) {
+        solve();
+    }
+    return 0;
+}
